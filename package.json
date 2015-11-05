@@ -1,0 +1,30 @@
+{
+  "name": "truth-or-dare",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bundle.js",
+  "dependencies": {
+    "style-loader": "^0.13.0",
+    "css-loader": "^0.22.0"
+  },
+  "devDependencies": {
+    "bootstrap": "^3.3.5",
+    "file-loader": "^0.8.4",
+    "jquery": "^2.1.4",
+    "webpack": "^1.12.2",
+    "webpack-dev-server": "^1.12.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hellofeiwu/truth-or-dare.git"
+  },
+  "author": "Fei Wu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hellofeiwu/truth-or-dare/issues"
+  },
+  "homepage": "https://github.com/hellofeiwu/truth-or-dare#readme"
+}
