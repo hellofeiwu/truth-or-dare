@@ -5,7 +5,7 @@ var homeTmpl = require('./home.html');
 
 var HomeView = new BaseView();
 
-HomeView.render = function () {
+HomeView.prototype.render = function () {
     return homeTmpl;
 };
 

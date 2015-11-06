@@ -55,6 +55,7 @@
 
 	$(function(){
 	    HomeView.render();
+	    console.log(homeTmpl);
 	});
 
 /***/ },
@@ -12128,7 +12129,7 @@
 
 	var HomeView = new BaseView();
 
-	HomeView.render = function () {
+	HomeView.prototype.render = function () {
 	    return homeTmpl;
 	};
 
@@ -12154,7 +12155,7 @@
 /* 28 */
 /***/ function(module, exports) {
 
-	module.exports = "hello, this is the home page!";
+	module.exports = "<h1>\n    hello, this is the home page!\n</h1>";
 
 /***/ }
 /******/ ]);
