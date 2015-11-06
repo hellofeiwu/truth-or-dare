@@ -10,6 +10,7 @@
   "devDependencies": {
     "bootstrap": "^3.3.5",
     "file-loader": "^0.8.4",
+    "html-loader": "^0.3.0",
     "jquery": "^2.1.4",
     "webpack": "^1.12.2",
     "webpack-dev-server": "^1.12.1"
