@@ -5,9 +5,8 @@ require('bootstrap/dist/css/bootstrap.css');
 require('bootstrap');
 
 require("./main.css");
-var HomeView = require("./views/home-view");
+var router = require("./router");
 
 $(function(){
-    HomeView.render();
-    console.log(homeTmpl);
+    router.init($('body'));
 });

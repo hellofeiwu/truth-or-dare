@@ -10,5 +10,6 @@ module.exports = {
             {test: /\.(svg|woff|woff2|eot|dtd|png|gif|jpg|jpeg|ttf)(\?.*)?$/, loader: "file"},
             {test: /\.html$/, loader: "html" },
         ]
-    }
+    },
+    devtool: '#inline-source-map',
 };
