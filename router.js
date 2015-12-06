@@ -8,7 +8,7 @@ var router = {
     init: function ($container) {
         this.$container = $container;
         window.onhashchange = function () {
-            this.renderPage(this.getFragment());
+            router.renderPage(router.getFragment());
         };
         this.renderPage();
     },
