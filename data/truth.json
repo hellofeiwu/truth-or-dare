@@ -1,10 +1,38 @@
 [
   {
-    "title": "Truth 1",
-    "content": "Is it true that you have cats"
+    "question": "1"
   },
   {
-    "title": "Truth 2",
-    "content": "Is it true that you love dogs more"
+    "question": "2"
+  },
+  {
+    "question": "3"
+  },
+  {
+    "question": "4"
+  },
+  {
+    "question": "5"
+  },
+  {
+    "question": "6"
+  },
+  {
+    "question": "7"
+  },
+  {
+    "question": "8"
+  },
+  {
+    "question": "9"
+  },
+  {
+    "question": "10"
+  },
+  {
+    "question": "11"
+  },
+  {
+    "question": "12"
   }
 ]
