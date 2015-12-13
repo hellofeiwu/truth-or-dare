@@ -10,6 +10,8 @@
   "devDependencies": {
     "bootstrap": "^3.3.5",
     "file-loader": "^0.8.4",
+    "handlebars": "^4.0.5",
+    "handlebars-loader": "^1.1.4",
     "html-loader": "^0.3.0",
     "jquery": "^2.1.4",
     "json-loader": "^0.5.4",

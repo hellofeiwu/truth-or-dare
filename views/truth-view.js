@@ -1,6 +1,6 @@
 'use strict';
 
-var truthTmpl = require('./truth.html');
+var truthTmpl = require('./truth.handlebars');
 var truth = require('../data/truth.json');
 
 var TruthView = function () {
@@ -8,14 +8,16 @@ var TruthView = function () {
 };
 
 TruthView.prototype.render = function () {
-    var html = '';
-    for (var i = 0; i < truth.length; ++i) {
-        var title = '<h1>' + truth[i].title + '</h1>';
-        var content = '<p>' + truth[i].content + '</p>';
+    var i = Math.floor((Math.random() * truth.length));
+    var $truthTmpl = $(truthTmpl);
+    $truthTmpl.find('#change').click(function() {
+        truth.splice(i,1);
+        i = Math.floor((Math.random() * truth.length));
+    });
 
-        html += title + content;
-    }
-    return html;
+    return truthTmpl({
+        question: truth[i].question
+    });
 };
 
 var truthView = new TruthView();
