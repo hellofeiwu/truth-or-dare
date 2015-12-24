@@ -1,15 +1,30 @@
 'use strict';
 
-var dareTmpl = require('./dare.html');
+var dareTmpl = require('./dare.handlebars');
+var dare = require('../data/dare.json');
 
-var DareView = function () {
+var TruthView = function () {
 
 };
 
-DareView.prototype.render = function () {
-    return dareTmpl;
+TruthView.prototype.render = function () {
+    var i = Math.floor((Math.random() * dare.length));
+    var $dareTmpl = $(dareTmpl({
+        question: dare[i].question
+    }));
+    $dareTmpl.find('#change').click(function() {
+        if (dare.length == 1) {
+            alert('This is the last question.');
+        }else {
+            dare.splice(i,1);
+            i = Math.floor((Math.random() * dare.length));
+            $dareTmpl.find('#question').html(dare[i].question);
+        }
+    });
+
+    return $dareTmpl;
 };
 
-var dareView = new DareView();
+var dareView = new TruthView();
 
 module.exports = dareView;

@@ -20,19 +20,20 @@ var router = {
             hash = this.getFragment();
         }
 
-        var content;
+        var $content;
         switch (hash) {
             case 'truth':
-                content = truthView.render();
+                $content = truthView.render();
                 break;
             case 'dare':
-                content = dareView.render();
+                $content = dareView.render();
                 break;
             default:
-                content = homeView.render();
+                $content = homeView.render();
                 break;
         }
-        this.$container.html(content);
+        this.$container.empty();
+        this.$container.append($content);
     }
 };
 
