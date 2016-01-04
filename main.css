@@ -4,3 +4,14 @@ body {
 .center {
     text-align: center;
 }
+
+.footer {
+    text-align: center;
+    width: 100%;
+    position: fixed;
+    bottom: 1em;
+}
+
+.home {
+    background-image: url("image/bg.jpg");
+}
