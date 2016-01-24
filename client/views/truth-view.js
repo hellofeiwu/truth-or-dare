@@ -1,7 +1,7 @@
 'use strict';
 
 var truthTmpl = require('./truth.handlebars');
-var truth = require('../data/truth.json');
+var truth = require('./truth.json');
 
 var TruthView = function () {
 

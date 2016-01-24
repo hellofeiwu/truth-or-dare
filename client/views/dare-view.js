@@ -1,7 +1,7 @@
 'use strict';
 
 var dareTmpl = require('./dare.handlebars');
-var dare = require('../data/dare.json');
+var dare = require('./dare.json');
 
 var TruthView = function () {
 
