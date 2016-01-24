@@ -4,8 +4,9 @@
   "description": "",
   "main": "bundle.js",
   "dependencies": {
-    "style-loader": "^0.13.0",
-    "css-loader": "^0.22.0"
+    "css-loader": "^0.22.0",
+    "express": "^4.13.4",
+    "style-loader": "^0.13.0"
   },
   "devDependencies": {
     "bootstrap": "^3.3.5",
