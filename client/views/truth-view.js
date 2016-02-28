@@ -2,7 +2,6 @@
 
 var $ = require('jquery');
 var truthTmpl = require('./truth.handlebars');
-//var truth = require('../data/truth.json');
 
 var TruthView = function () {
     this.$container = $('<div />');
