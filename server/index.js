@@ -121,6 +121,6 @@ app.get('/api/truth', function (req, res) {
 
 app.use(express.static('../client'));
 
-app.listen(process.env.PORT, process.env.IP, function () {
+app.listen(process.env.PORT || 3000, process.env.IP || 'localhost', function () {
     console.log("I'm listening on port " + process.env.PORT);
 });
