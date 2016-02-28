@@ -23,13 +23,16 @@ var router = {
         var $content;
         switch (hash) {
             case 'truth':
-                $content = truthView.render();
+                truthView.render();
+                $content = truthView.$container;
                 break;
             case 'dare':
-                $content = dareView.render();
+                dareView.render();
+                $content = dareView.$container;
                 break;
             default:
-                $content = homeView.render();
+                homeView.render();
+                $content = homeView.$container;
                 break;
         }
         this.$container.empty();
