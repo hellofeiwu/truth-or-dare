@@ -1,6 +1,10 @@
 var express = require('express');
 var app = express();
 
+var mongoose = require('mongoose');
+
+mongoose.connect('mongodb://localhost/truth_dare');
+
 app.get('/', function (req, res) {
     res.sendFile('index.html', { root: '../client' });
 });
