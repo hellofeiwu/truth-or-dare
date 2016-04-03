@@ -8,7 +8,8 @@ QuestionModel.find({}, function (err, questions) {
         console.log(err);
     } else {
         for (var i = 0; i < questions.length; i++) {
-            console.log(questions[i].question);
+            console.log('question: ' + i + ' ' + questions[i].question);
+            console.log('type: ' + questions[i].type);
         }
     }
 });

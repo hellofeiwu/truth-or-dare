@@ -9,7 +9,7 @@ mongoose.connect('mongodb://localhost/truth_dare');
 
 var i;
 for (i = 0; i < truthJson.length; i++) {
-    // console.log(truthJson[i].question);    
+    console.log(truthJson[i].question);    
     var question = new QuestionModel({
         question: truthJson[i].question,
         type: 'truth'
@@ -18,7 +18,7 @@ for (i = 0; i < truthJson.length; i++) {
         if (err) {
             console.log(err);
         } else {
-            console.log("new question saved successfully");
+            console.log("new truth question saved successfully");
         }
     });
 }
@@ -33,7 +33,7 @@ for (j = 0; j < dareJson.length; j++) {
         if (err) {
             console.log(err);
         } else {
-            console.log("new question saved successfully");
+            console.log("new dare question saved successfully");
         }
     });
 }

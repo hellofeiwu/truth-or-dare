@@ -6,25 +6,20 @@ var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/truth_dare');
 var QuestionModel = require('./schemas/question');
 
-app.get('/', function (req, res) {
-    res.sendFile('index.html', { root: '../client' });
-});
-
 app.get('/api/truth', function (req, res) {
     
     var data = [];
     
     QuestionModel.find({type: 'truth'}, function (err, questions) {
-    if (err) {
-        console.log(err);
-    } else {
-        for (var i = 0; i < questions.length; i++) {
-                data.push({"question": questions[i].question});
+        if (err) {
+            console.log(err);
+        } else {
+            for (var i = 0; i < questions.length; i++) {
+                    data.push({"question": questions[i].question});
+            }
         }
-    }
-});
-    
-    res.json(data);
+        res.json(data);
+    });
 });
 
 app.get('/api/dare', function (req, res) {
@@ -39,8 +34,8 @@ app.get('/api/dare', function (req, res) {
                 data.push({"question": questions[i].question});
         }
     }
-});
     res.json(data);
+});
 });
 
 app.use(express.static('../client'));
