@@ -10,6 +10,7 @@
     "style-loader": "^0.13.0"
   },
   "devDependencies": {
+    "body-parser": "^1.15.0",
     "bootstrap": "^3.3.5",
     "file-loader": "^0.8.4",
     "handlebars": "^4.0.5",

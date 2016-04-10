@@ -12,25 +12,46 @@ TruthView.prototype.render = function () {
     var self = this;
     
     // make api call and response
-    $.getJSON(url, function (data) {
+    var init = function() {
+        $.getJSON(url, function (data) {
         var truth = data;
-        var i = Math.floor((Math.random() * truth.length));
        
         var $truthTmpl = $(truthTmpl({
-            question: truth[i].question
+            question: truth.question
         }));
         
         $truthTmpl.find('#change').click(function() {
-            if (truth.length == 1) {
-                alert('This is the last question.');
-            }else {
-                truth.splice(i,1);
-                i = Math.floor((Math.random() * truth.length));
-                $truthTmpl.find('#question').html(truth[i].question + '?');
-            }
+            init();
         });
         self.$container.empty().append($truthTmpl);
+        
+        $truthTmpl.find("#submit").click(function() {
+            console.log('button works ' + $truthTmpl.find("#new-question").val());
+            var url = 'api/truth';
+            var newQuestion = {
+                question: $truthTmpl.find("#new-question").val(),
+                type: 'truth'
+            };
+            $.ajax({
+                type: "POST",
+                url: url,
+                contentType: 'application/json',
+                data: JSON.stringify(newQuestion),
+                success: function(data){
+                    $truthTmpl.find('#myModal').modal('hide');
+                    console.log('works');
+                    location.reload();
+                },
+                error: function(data) {
+                    console.log('fail');
+                },
+                dataType: 'json'
+            });
+        });
     });
+    };
+    
+    init();
 };
 
 var truthView = new TruthView();
