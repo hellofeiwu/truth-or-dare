@@ -2,11 +2,14 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var _ = require('lodash');
 
 mongoose.connect('mongodb://localhost/truth_dare');
 var QuestionModel = require('./schemas/question');
 
 app.use(bodyParser.json()); // for parsing application/json
+
+var idArray = [];
 
 app.get('/api/truth', function (req, res) {
     
@@ -15,9 +18,23 @@ app.get('/api/truth', function (req, res) {
     QuestionModel.find({type: 'truth'}, function (err, questions) {
         if (err) {
             console.log(err);
-        } else {
-            var i = Math.floor((Math.random() * questions.length));
-            data = {"question": questions[i].question};
+        }else {
+            if (idArray.length == questions.length) {
+                data = {"question": "There is no new question."};
+            }else {
+                var unusedIndexes = [];
+                
+                for (var i = 0; i < questions.length; ++i) {
+                    if (!_.includes(idArray, i)) {
+                        unusedIndexes.push(i);
+                    }
+                }
+                
+                var i = Math.floor((Math.random() * unusedIndexes.length));
+                var questionsIndex = unusedIndexes[i];
+                idArray.push(questionsIndex);
+                data = {"question": questions[questionsIndex].question};
+            }
         }
         res.json(data);
     });

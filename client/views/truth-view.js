@@ -40,7 +40,6 @@ TruthView.prototype.render = function () {
                 success: function(data){
                     $truthTmpl.find('#myModal').modal('hide');
                     console.log('works');
-                    location.reload();
                 },
                 error: function(data) {
                     console.log('fail');
