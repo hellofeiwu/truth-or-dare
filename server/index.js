@@ -6,6 +6,7 @@ var _ = require('lodash');
 
 mongoose.connect('mongodb://localhost/truth_dare');
 var QuestionModel = require('./schemas/question');
+var UserModel = require('./schemas/user');
 
 app.use(bodyParser.json()); // for parsing application/json
 
@@ -72,6 +73,34 @@ app.post('/api/truth', function (req, res) {
             console.log("new truth question saved successfully");
             res.json({
                 message: 'question saved successfully'
+            });
+        }
+    });
+});
+
+app.post('/api/login', function (req, res) {
+    console.log(req.body);
+    
+    UserModel.findOne({username: req.body.username}, function (err, user) {
+        if (err) {
+            console.log(err);
+            res.status(500).json({
+                message: 'error readding from database'
+            });
+        } else if (!user) {
+            console.log("user not exist");
+            res.status(401).json({
+                message: 'user not exist'
+            });
+        }else if (req.body.password !== user.password) {
+            console.log("wrong password");
+            res.status(401).json({
+                message: 'wrong password'
+            });
+        } else{
+            console.log("user authorized");
+            res.json({
+                message: 'logged in successfully'
             });
         }
     });

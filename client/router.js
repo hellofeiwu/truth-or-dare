@@ -3,6 +3,7 @@
 var homeView = require('./views/home-view');
 var truthView = require('./views/truth-view');
 var dareView = require('./views/dare-view');
+var loginView = require('./views/login-view');
 
 var router = {
     init: function ($container) {
@@ -29,6 +30,10 @@ var router = {
             case 'dare':
                 dareView.render();
                 $content = dareView.$container;
+                break;
+            case 'login':
+                loginView.render();
+                $content = loginView.$container;
                 break;
             default:
                 homeView.render();

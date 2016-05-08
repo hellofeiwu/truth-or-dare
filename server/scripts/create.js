@@ -1,7 +1,9 @@
 var mongoose = require('mongoose');
 var QuestionModel = require('../schemas/question');
+var UserModel = require('../schemas/user');
 var truthJson = require('../datajson/truth');
 var dareJson = require('../datajson/dare');
+var userJson = require('../datajson/user');
 
 var mongoose = require('mongoose');
 
@@ -34,6 +36,21 @@ for (j = 0; j < dareJson.length; j++) {
             console.log(err);
         } else {
             console.log("new dare question saved successfully");
+        }
+    });
+}
+
+var k;
+for (k = 0; k < userJson.length; k++) {
+    var user = new UserModel({
+        username: userJson[k].username,
+        password: userJson[k].password,
+    });
+    user.save(function (err) {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log("new user saved successfully");
         }
     });
 }
