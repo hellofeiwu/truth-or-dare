@@ -2,6 +2,7 @@
 
 var $ = require('jquery');
 var truthTmpl = require('./truth.handlebars');
+var HttpRequest = require('../common/httpRequest.js');
 
 var TruthView = function () {
     this.$container = $('<div />');
@@ -32,20 +33,18 @@ TruthView.prototype.render = function () {
                 question: $truthTmpl.find("#new-question").val(),
                 type: 'truth'
             };
-            $.ajax({
-                type: "POST",
-                url: url,
-                contentType: 'application/json',
-                data: JSON.stringify(newQuestion),
-                success: function(data){
+            HttpRequest.http_request_with_data_authentication(
+                'POST',
+                url,
+                JSON.stringify(newQuestion),
+                function successCallback(data){
                     $truthTmpl.find('#myModal').modal('hide');
                     console.log('works');
                 },
-                error: function(data) {
+                function (data) {
                     console.log('fail');
-                },
-                dataType: 'json'
-            });
+                }
+            );
         });
     });
     };

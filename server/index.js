@@ -57,22 +57,43 @@ app.get('/api/dare', function (req, res) {
 });
 });
 
+
+// add truth question api
 app.post('/api/truth', function (req, res) {
     console.log(req.body);
-    var question = new QuestionModel({
-        question: req.body.question,
-        type: req.body.type
-    });
-    question.save(function (err) {
+    UserModel.findOne({username: req.get('authorization')}, function (err, user) {
         if (err) {
             console.log(err);
             res.status(500).json({
-                message: 'question save failed'
+                message: 'error readding from database'
             });
-        } else {
-            console.log("new truth question saved successfully");
+        } else if (!user) {
+            console.log("user not exist");
+            res.status(401).json({
+                message: 'user not exist'
+            });
+        }else{
+            console.log("user authorized");
             res.json({
-                message: 'question saved successfully'
+                message: 'logged in successfully'
+            });
+            
+            var question = new QuestionModel({
+                question: req.body.question,
+                type: req.body.type
+            });
+            question.save(function (err) {
+                if (err) {
+                    console.log(err);
+                    res.status(500).json({
+                        message: 'question save failed'
+                    });
+                } else {
+                    console.log("new truth question saved successfully");
+                    res.json({
+                        message: 'question saved successfully'
+                    });
+                }
             });
         }
     });

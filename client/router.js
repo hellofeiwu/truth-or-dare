@@ -16,9 +16,16 @@ var router = {
     getFragment: function () {
         return window.location.hash.replace('#', '');
     },
+    authenticate: function () {
+        return window.localStorage.getItem('username');
+    },
     renderPage: function (hash) {
         if (hash === undefined) {
             hash = this.getFragment();
+        }
+        
+        if (this.authenticate() === undefined) {
+            hash = 'login';
         }
 
         var $content;
