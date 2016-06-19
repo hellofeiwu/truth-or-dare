@@ -74,9 +74,6 @@ app.post('/api/truth', function (req, res) {
             });
         }else{
             console.log("user authorized");
-            res.json({
-                message: 'logged in successfully'
-            });
             
             var question = new QuestionModel({
                 question: req.body.question,
@@ -94,6 +91,30 @@ app.post('/api/truth', function (req, res) {
                         message: 'question saved successfully'
                     });
                 }
+            });
+        }
+    });
+});
+
+// add new user
+app.post('/api/registration', function(req, res) {
+    console.log(req.body);
+    
+    var user = new UserModel({
+        username: req.body.username,
+        password: req.body.password
+    });
+    
+    user.save(function (err) {
+        if (err) {
+            console.log(err);
+            res.status(500).json({
+                message: 'user save failed'
+            });
+        }else {
+            console.log("new user saved successfully");
+            res.json({
+                message: 'user saved successfully'
             });
         }
     });
