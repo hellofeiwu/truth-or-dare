@@ -26,7 +26,7 @@ LoginView.prototype.render = function () {
                 data: JSON.stringify(loginInfo),
                 success: function(data){
                     window.localStorage.setItem('username', $loginTmpl.find("#username").val());
-                    window.location.assign('');
+                    window.location.hash = '';
                     console.log('works');
                 },
                 error: function(data) {

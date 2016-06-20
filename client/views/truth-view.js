@@ -43,8 +43,14 @@ TruthView.prototype.render = function () {
                 },
                 function (data) {
                     console.log('fail');
+                    window.location.hash = 'login';
                 }
             );
+        });
+
+        $truthTmpl.find("#logout").click(function() {
+            window.localStorage.removeItem('username');
+            window.location.hash = '';
         });
     });
     };
