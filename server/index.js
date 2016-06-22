@@ -12,10 +12,16 @@ app.use(bodyParser.json()); // for parsing application/json
 
 var idArray = [];
 
-app.get('/api/truth', function (req, res) {
-    
+// get new truth question
+app.get('/api/truth/:restore', function (req, res) {
+
+    if (req.params.restore == 1) {
+        console.log(req.params.restore);
+        idArray = [];
+    }
+
     var data = {};
-    
+
     QuestionModel.find({type: 'truth'}, function (err, questions) {
         if (err) {
             console.log(err);
@@ -24,13 +30,13 @@ app.get('/api/truth', function (req, res) {
                 data = {"question": "There is no new question."};
             }else {
                 var unusedIndexes = [];
-                
+
                 for (var i = 0; i < questions.length; ++i) {
                     if (!_.includes(idArray, i)) {
                         unusedIndexes.push(i);
                     }
                 }
-                
+
                 var i = Math.floor((Math.random() * unusedIndexes.length));
                 var questionsIndex = unusedIndexes[i];
                 idArray.push(questionsIndex);
@@ -41,6 +47,7 @@ app.get('/api/truth', function (req, res) {
     });
 });
 
+// get new dare question
 app.get('/api/dare', function (req, res) {
     
     var data = [];

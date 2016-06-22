@@ -69,6 +69,10 @@ body {
     margin: 0;
     display: table-cell;
     vertical-align: middle;
+    button {
+      display: none;
+      margin-top: 20px;
+    }
   }
 }
 
@@ -82,4 +86,11 @@ body {
   margin: auto;
   position: absolute;
   transform: translate(10px, 5px);
+}
+
+.move-left {
+  transform: translate(-500px, 0) scale(0.8);
+  transition: .8s;
+  cursor: e-resize;
+  opacity: 0;
 }
