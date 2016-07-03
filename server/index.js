@@ -156,6 +156,7 @@ app.post('/api/login', function (req, res) {
 });
 
 app.use(express.static('../client'));
+app.use('/node_modules', express.static('../node_modules'))
 
 app.listen(process.env.PORT || 3000, process.env.IP || 'localhost', function () {
     console.log("I'm listening on port " + process.env.PORT);

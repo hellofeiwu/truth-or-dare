@@ -42,11 +42,16 @@ TruthView.prototype.render = function () {
     };
 
     getQuestion();
-
-    $truthTmpl.find('#change').click(function() {
+    
+    $truthTmpl.find('.card-container').on('swipeleft', function () {
         $truthTmpl.find('.card').addClass('move-left');
         getQuestion();
     });
+
+    // $truthTmpl.find('#change').click(function() {
+    //     $truthTmpl.find('.card').addClass('move-left');
+    //     getQuestion();
+    // });
 
     $truthTmpl.find("#submit").click(function() {
         console.log('button works ' + $truthTmpl.find("#new-question").val());
