@@ -1,16 +1,60 @@
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser');
 var mongoose = require('mongoose');
 var _ = require('lodash');
 
 mongoose.connect('mongodb://localhost/truth_dare');
 var QuestionModel = require('./schemas/question');
 var UserModel = require('./schemas/user');
+var SessionModel = require('./schemas/session');
 
 app.use(bodyParser.json()); // for parsing application/json
+app.use(cookieParser());
 
 var idArray = [];
+
+var createSession = function(res, callback) {
+    var session = new SessionModel({
+            id: Date.now(),
+            expiry: Date.now() + 86400000
+        });
+        
+        session.save(function (err) {
+            console.log('session saved')
+            if (!err) {
+                res.cookie('sessionId', session.id);
+                callback();
+            }
+        });
+};
+
+app.use(function (req, res, next) {
+    console.log('in our middleware')
+    if (req.cookies.sessionId) {
+        console.log('user has session: ' + req.cookies.sessionId)
+        SessionModel.findOne({id: req.cookies.sessionId}, function(err, session) {
+            if (err) {
+                console.log(err);
+                next();
+            }else if (session == undefined || session.expiry < Date.now()){
+                createSession(res, next);
+            }else {
+                console.log('user session updated');
+                session.expiry = Date.now() + 86400000;
+                session.save(function (err) {
+                    if (!err) {
+                        next();
+                    }
+                });
+            }
+        });
+    } else {
+        console.log('user does not have session');
+        createSession(res, next);
+    }
+})
 
 // get new truth question
 app.get('/api/truth/:restore', function (req, res) {
