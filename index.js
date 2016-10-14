@@ -18,7 +18,7 @@ var opts = {};
 opts.jwtFromRequest = ExtractJwt.fromAuthHeader();
 opts.secretOrKey = CONF.secret;
 passport.use(new JwtStrategy(opts, function(jwt_payload, done) {
-    userModel.findOne({id: jwt_payload.sub}, function(err, user) {
+    userModel.findOne({_id: jwt_payload._doc._id}, function(err, user) {
         if (err) {
             return done(err, false);
         }

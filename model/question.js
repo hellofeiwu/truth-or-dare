@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 
 var questionSchema = new mongoose.Schema({
+    userId: mongoose.Schema.Types.ObjectId,
     question: String,
     type: String
 });
