@@ -63,6 +63,6 @@ app.get('/question', requireAuth, questionController.getQuestions);
 app.post('/question', requireAuth, questionController.createQuestion);
 app.delete('/question', requireAuth, questionController.deleteQuestion);
 
-app.listen(3000, function () {
-    console.log('Listening on port 3000');
+app.listen(process.env.PORT, function () {
+    console.log('Listening on port' + process.env.PORT);
 });
