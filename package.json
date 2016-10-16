@@ -9,15 +9,14 @@
     "mongoose": "^4.6.0",
     "passport": "^0.3.2",
     "passport-jwt": "^2.1.0",
-    "passport-localapikey": "0.0.3"
-  },
-  "devDependencies": {
+    "passport-localapikey": "0.0.3",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.15.2",
     "multer": "^1.2.0",
     "request": "^2.74.0",
     "xml2js": "^0.4.17"
   },
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
