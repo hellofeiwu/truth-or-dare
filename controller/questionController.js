@@ -3,7 +3,7 @@
 var questionModel = require('../model/question');
 
 var questionController = {
-    createQuestion: function(req, res) {
+    addQuestion: function(req, res) {
         var question = new questionModel({
             userId: req.user._id,
             question: req.body.question,
@@ -17,7 +17,7 @@ var questionController = {
         res.send('question created');
     },
     getQuestions: function(req, res) {
-        questionModel.find({userId: req.user._id, type: req.query.type || 'truth'}).exec(function(err, questions) {
+        questionModel.find({userId: req.user._id}).exec(function(err, questions) {
             if (err) throw err;
             res.send(questions);
         });

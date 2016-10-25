@@ -60,7 +60,7 @@ app.post('/register', userController.register);
 app.post('/login', userController.login);
 
 app.get('/question', requireAuth, questionController.getQuestions);
-app.post('/question', requireAuth, questionController.createQuestion);
+app.post('/question', requireAuth, questionController.addQuestion);
 app.delete('/question', requireAuth, questionController.deleteQuestion);
 
 app.listen(3000, function () {
